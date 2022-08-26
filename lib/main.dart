@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/Authntications/Registration.dart';
+import 'package:new_project/Authntications/login%20page.dart';
 import 'package:new_project/BottonNavigatorbar.dart';
+import 'package:new_project/pages/Chat_pages.dart';
+import 'package:new_project/pages/Home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +21,7 @@ class MyApp extends StatelessWidget {
      
         primarySwatch: Colors.blue,
       ),
-      home:BottonControllar(),
+      home: LoginPage(),
     );
   }
 }

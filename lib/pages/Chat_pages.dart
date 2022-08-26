@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
+class Chat extends StatelessWidget {
+  const Chat({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +11,8 @@ class ChatPage extends StatelessWidget {
           "Chat Page",
           style: TextStyle(
             fontSize: 30,
-            
           ),
-          
-          ),
+        ),
       ),
     );
   }

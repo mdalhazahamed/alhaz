@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+class Settings extends StatelessWidget {
+  const Settings({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +11,10 @@ class SettingsPage extends StatelessWidget {
           "Settings Page",
           style: TextStyle(
             fontSize: 30,
-            
           ),
-          ),
+        ),
       ),
     );
   }
 }
+ 

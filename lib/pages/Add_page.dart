@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class Add_Page extends StatelessWidget {
@@ -13,9 +11,8 @@ class Add_Page extends StatelessWidget {
           "Add Page",
           style: TextStyle(
             fontSize: 30,
-            
           ),
-          ),
+        ),
       ),
     );
   }
