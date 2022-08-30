@@ -28,6 +28,12 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        title: Center(child: Text("API Link-Up") ),
+        leading: Icon(Icons.api),
+        
+      ),
       backgroundColor: Colors.grey,
       body: Visibility(
         visible: isLoaded,
@@ -50,7 +56,7 @@ class _ChatState extends State<Chat> {
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                           child: Column(
                             children: [
                               Row(
@@ -59,7 +65,7 @@ class _ChatState extends State<Chat> {
                                     comments![index].name,
                                     style: TextStyle(
                                       color: Color.fromARGB(255, 5, 49, 145),
-                                      fontSize: 20,
+                                      fontSize: 15,
                                     ),
                                   ),
                                 ],
@@ -70,18 +76,19 @@ class _ChatState extends State<Chat> {
                                     comments![index].email,
                                     style: TextStyle(
                                       color: Colors.redAccent,
-                                      fontSize: 15,
+                                      fontSize: 12,
                                     ),
                                   ),
                                 ],
                               ),
+                              SizedBox(height: 20,),
                                Row(
                                 children: [
                                   Text(
                                     comments![index].body,
                                     style: TextStyle(
                                       color: Colors.grey,
-                                      fontSize: 15,
+                                      fontSize: 12,
                                     ),
                                   ),
                                 ],
