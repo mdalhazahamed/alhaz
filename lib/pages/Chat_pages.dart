@@ -1,17 +1,103 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/models/comments_helper.dart';
+import 'package:new_project/models/commmets.dart';
 
-class Chat extends StatelessWidget {
-  const Chat({Key? key}) : super(key: key);
+class Chat extends StatefulWidget {
+  @override
+  State<Chat> createState() => _ChatState();
+}
+
+class _ChatState extends State<Chat> {
+  List<Comments>? comments;
+
+  bool isLoaded = false;
+
+  getData() async {
+    comments = await CommentsHelper().getComments();
+
+    setState(() {
+      isLoaded = true;
+    });
+  }
+
+  @override
+  void initState() {
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          "Chat Page",
-          style: TextStyle(
-            fontSize: 30,
-          ),
+      backgroundColor: Colors.grey,
+      body: Visibility(
+        visible: isLoaded,
+        child: ListView.builder(
+            itemCount: comments?.length ?? 0,
+            itemBuilder: (_, index) {
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    child: Container(
+                      height: 150,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    comments![index].name,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 5, 49, 145),
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                               Row(
+                                children: [
+                                  Text(
+                                    comments![index].email,
+                                    style: TextStyle(
+                                      color: Colors.redAccent,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                               Row(
+                                children: [
+                                  Text(
+                                    comments![index].body,
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }),
+        replacement: Center(
+          child: CircularProgressIndicator(),
         ),
       ),
     );
