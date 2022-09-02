@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/models/comments_helper.dart';
 import 'package:new_project/models/commmets.dart';
+import 'package:new_project/pages/add_product.dart';
 
 class Chat extends StatefulWidget {
   @override
@@ -28,11 +29,11 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Center(child: Text("API Link-Up") ),
+        title: Center(child: Text("API Link-Up")),
         leading: Icon(Icons.api),
-        
       ),
       backgroundColor: Colors.grey,
       body: Visibility(
@@ -40,67 +41,79 @@ class _ChatState extends State<Chat> {
         child: ListView.builder(
             itemCount: comments?.length ?? 0,
             itemBuilder: (_, index) {
-              return Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
-                    child: Container(
-                      height: 150,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    comments![index].name,
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 5, 49, 145),
-                                      fontSize: 15,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Add_Product(),
+                    ),
+                  );
+                },
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      child: Container(
+                        height: 120,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.amberAccent,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 23),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                     "Name:",
+                                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600,),
                                     ),
-                                  ),
-                                ],
-                              ),
-                               Row(
-                                children: [
-                                  Text(
-                                    comments![index].email,
-                                    style: TextStyle(
-                                      color: Colors.redAccent,
-                                      fontSize: 12,
+                                    SizedBox(width: 10,),
+                                    Text(
+                                      comments![index].name,
+                                      style: TextStyle(
+                                        color: Colors.green,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 20,),
-                               Row(
-                                children: [
-                                  Text(
-                                    comments![index].body,
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  children: [
+                                    Text(
+                                     "Email:",
+                                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              
-                            ],
+                                    SizedBox(width: 10,),
+                                    Text(
+                                      comments![index].email,
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               );
             }),
         replacement: Center(
